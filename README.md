@@ -34,41 +34,65 @@
 - ✨Magic ✨
 
 ## Цель работы
-Ознакомиться с основными операторами зыка Python на примере реализации линейной регрессии.
+Ознакомиться с основными функциями Unity и взаимодействием с объектами внутри редактора.
 
 ## Задание 1
-### Пошагово выполнить каждый пункт раздела "ход работы" с описанием и примерами реализации задач
+### Пошагово выполнить каждый пункт с описанием и примера реализации задач по теме видео самостоятельной работы.
 Ход работы:
-- Произвести подготовку данных для работы с алгоритмом линейной регрессии. 10 видов данных были установлены случайным образом, и данные находились в линейной зависимости. Данные преобразуются в формат массива, чтобы их можно было вычислить напрямую при использовании умножения и сложения.
+1)	Создать новый проект из шаблона 3D – Core;
+2)	Проверить, что настроена интеграция редактора Unity и Visual Studio Code (пункты 8-10 введения);
+3)	Создать объект Plane;
+4)	Создать объект Cube;
+5)	Создать объект Sphere;
+6)	Установить компонент Sphere Collider для объекта Sphere;
+7)	Настроить Sphere Collider в роли триггера;
+8)	Объект куб перекрасить в красный цвет;
+9)	Добавить кубу симуляцию физики, при это куб не должен проваливаться под Plane;
+10) Написать скрипт, который будет выводить в консоль сообщение о том, что объект Sphere столкнулся с объектом Cube;
+11) При столкновении Cube должен менять свой цвет на зелёный, а при завершении столкновения обратно на красный.
+
 
 ```py
 
-In [ ]:
-#Import the required modules, numpy for calculation, and Matplotlib for drawing
-import numpy as np
-import matplotlib.pyplot as plt
-#This code is for jupyter Notebook only
-%matplotlib inline
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-# define data, and change list to array
-x = [3,21,22,34,54,34,55,67,89,99]
-x = np.array(x)
-y = [2,22,24,65,79,82,55,130,150,199]
-y = np.array(y)
+public class CheckCollider : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
 
-#Show the effect of a scatter plot
-plt.scatter(x,y)
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        Debug.Log("Произошло столкновение с " + other.gameObject.name);
+        other.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+    }
+
+    private void OnTriggerExit(Collider other) {
+        Debug.Log("Завершено столкновение с " + other.gameObject.name);
+        other.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+    }
+}
+
 
 ```
 
-- Определите связанные функции. Функция модели: определяет модель линейной регрессии wx+b. Функция потерь: функция потерь среднеквадратичной ошибки. Функция оптимизации: метод градиентного спуска для нахождения частных производных w и b.
-
-
 ## Задание 2
-### Должна ли величина loss стремиться к нулю при изменении исходных данных? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ.
+### Продемонстрируйте на сцене в Unity следующее:
+- Что произойдёт с координатами объекта, если он перестанет быть дочерним?
+- Создайте три различных примера работы компонента RigidBody?
 
-- Перечисленные в этом туториале действия могут быть выполнены запуском на исполнение скрипт-файла, доступного [в репозитории](https://github.com/Den1sovDm1triy/hfss-scripting/blob/main/ScreatingSphereInAEDT.py).
-- Для запуска скрипт-файла откройте Ansys Electronics Desktop. Перейдите во вкладку [Automation] - [Run Script] - [Выберите файл с именем ScreatingSphereInAEDT.py из репозитория].
+
+
 
 ```py
 
