@@ -125,59 +125,64 @@ https://user-images.githubusercontent.com/57959955/192265740-7569c76f-f480-450f-
 
 
 Пример 2: 
+1) Создать объект Sphere и Plane
+2) К объекту Sphere добавить компонент Rigidbody
+3) Поднять объект Sphere над Plane
+4) Установть значение 6 в строке Drag
+5) Включить гравитацию для объекта Sphere
+6) Строка Drag отвечает за замедление движения объекта в пространстве. Чем больше значение тем больше будет замедлен объект.
+7) При изменении этого значения меняется скорость падения объекта Sphere на Plane
 
+
+Пример 3:
+1) Создать объект Sphere и Plane
+2) К объекту Sphere и Plane добавить компонент Rigidbody
+3) Поднять объект Sphere над Plane
+4) Установить гравитаю для Sphere и кинематику для Plane
+5) При прикосновении с объектов Sphere и Plane - Sphere будет уничтожаться
+
+
+
+https://user-images.githubusercontent.com/57959955/192293267-56d8ffd9-9667-475c-a169-8335da9993e8.mp4
 
 
 
 ```py
 
-import ScriptEnv
-ScriptEnv.Initialize("Ansoft.ElectronicsDesktop")
-oDesktop.RestoreWindow()
-oProject = oDesktop.NewProject()
-oProject.Rename("C:/Users/denisov.dv/Documents/Ansoft/SphereDIffraction.aedt", True)
-oProject.InsertDesign("HFSS", "HFSSDesign1", "HFSS Terminal Network", "")
-oDesign = oProject.SetActiveDesign("HFSSDesign1")
-oEditor = oDesign.SetActiveEditor("3D Modeler")
-oEditor.CreateSphere(
-	[
-		"NAME:SphereParameters",
-		"XCenter:="		, "0mm",
-		"YCenter:="		, "0mm",
-		"ZCenter:="		, "0mm",
-		"Radius:="		, "1.0770329614269mm"
-	], 
-)
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DestroyObject : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+
+    private void OnCollisionEnter(Collision other) {
+        if (other.gameObject.name == "Sphere"){
+    Destroy(other.gameObject);
+        
+    }
+}
+
+}
 
 ```
 
 ## Задание 3
-### Какова роль параметра Lr? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ. В качестве эксперимента можете изменить значение параметра.
+### Реализуйте на сцене генерацию n кубиков. Число n вводится пользователем после старта сцены.
 
-- Перечисленные в этом туториале действия могут быть выполнены запуском на исполнение скрипт-файла, доступного [в репозитории](https://github.com/Den1sovDm1triy/hfss-scripting/blob/main/ScreatingSphereInAEDT.py).
-- Для запуска скрипт-файла откройте Ansys Electronics Desktop. Перейдите во вкладку [Automation] - [Run Script] - [Выберите файл с именем ScreatingSphereInAEDT.py из репозитория].
 
-```py
-
-import ScriptEnv
-ScriptEnv.Initialize("Ansoft.ElectronicsDesktop")
-oDesktop.RestoreWindow()
-oProject = oDesktop.NewProject()
-oProject.Rename("C:/Users/denisov.dv/Documents/Ansoft/SphereDIffraction.aedt", True)
-oProject.InsertDesign("HFSS", "HFSSDesign1", "HFSS Terminal Network", "")
-oDesign = oProject.SetActiveDesign("HFSSDesign1")
-oEditor = oDesign.SetActiveEditor("3D Modeler")
-oEditor.CreateSphere(
-	[
-		"NAME:SphereParameters",
-		"XCenter:="		, "0mm",
-		"YCenter:="		, "0mm",
-		"ZCenter:="		, "0mm",
-		"Radius:="		, "1.0770329614269mm"
-	], 
-)
-
-```
 
 ## Выводы
 
