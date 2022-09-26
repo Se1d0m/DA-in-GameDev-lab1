@@ -86,6 +86,11 @@ public class CheckCollider : MonoBehaviour
 
 ```
 
+
+![1](https://user-images.githubusercontent.com/57959955/192260786-ebee1bcd-e26b-4d66-bdc5-6d1dc78018f4.PNG)
+
+
+
 ## Задание 2
 ### Продемонстрируйте на сцене в Unity следующее:
 - Что произойдёт с координатами объекта, если он перестанет быть дочерним?
